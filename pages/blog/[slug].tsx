@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps = (context) => {
 const PostLayout: React.FC<{ post: Post }> = ({ post }) => {
   const Component = useMDXComponent(post.body.code);
   return (
-    <div>
+    <div className="sans">
       {" "}
       <Component components={MDXComponents} />
     </div>
