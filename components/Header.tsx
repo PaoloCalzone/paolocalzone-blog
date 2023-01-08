@@ -215,7 +215,7 @@ function clamp(number: number, a: number, b: number) {
   return Math.min(Math.max(number, min), max);
 }
 
-function AvatarContainer(className: string, ...props: any[]) {
+function AvatarContainer(className: any, ...props: any) {
   return (
     <div
       className={clsx(
@@ -227,7 +227,15 @@ function AvatarContainer(className: string, ...props: any[]) {
   );
 }
 
-function Avatar(large = false, className: string, ...props: any[]) {
+function Avatar({
+  large,
+  className,
+  ...props
+}: {
+  large?: boolean;
+  className?: any;
+  [x: string]: any;
+}) {
   return (
     <Link
       href="/"
