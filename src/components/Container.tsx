@@ -1,7 +1,14 @@
-import { forwardRef } from "react";
+import { forwardRef, ReactNode } from "react";
 import clsx from "clsx";
 
-const OuterContainer = forwardRef(function OuterContainer(
+interface Props {
+  children?: ReactNode;
+  className: string;
+  [x: string]: any;
+}
+export type Ref = any;
+
+export const OuterContainer = forwardRef<Ref, Props>(function OuterContainer(
   { className, children, ...props },
   ref
 ) {
@@ -12,7 +19,7 @@ const OuterContainer = forwardRef(function OuterContainer(
   );
 });
 
-const InnerContainer = forwardRef(function InnerContainer(
+export const InnerContainer = forwardRef<Ref, Props>(function InnerContainer(
   { className, children, ...props },
   ref
 ) {
@@ -27,8 +34,8 @@ const InnerContainer = forwardRef(function InnerContainer(
   );
 });
 
-export const Container = forwardRef(function Container(
-  { children, ...props },
+export const Container = forwardRef<Ref, Props>(function Container(
+  { className, children, ...props },
   ref
 ) {
   return (
@@ -37,6 +44,3 @@ export const Container = forwardRef(function Container(
     </OuterContainer>
   );
 });
-
-Container.Outer = OuterContainer;
-Container.Inner = InnerContainer;

@@ -209,12 +209,6 @@ function ModeToggle() {
   );
 }
 
-function clamp(number: number, a: number, b: number) {
-  let min = Math.min(a, b);
-  let max = Math.max(a, b);
-  return Math.min(Math.max(number, min), max);
-}
-
 function AvatarContainer(className: any, ...props: any) {
   return (
     <div
@@ -245,7 +239,7 @@ function Avatar({
     >
       <Image
         src={avatarImage}
-        alt=""
+        alt="we"
         sizes={large ? "4rem" : "2.25rem"}
         className={clsx(
           "rounded-full bg-zinc-100 object-cover dark:bg-zinc-800",
