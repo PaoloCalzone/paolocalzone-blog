@@ -8,7 +8,7 @@ import { Container } from "@/components/Container";
 import avatarImage from "@/images/avatar.jpg";
 import { Fragment, ReactNode, useEffect, useRef } from "react";
 
-interface MobileNavProps {
+interface NavProps {
   href: string;
   children?: ReactNode;
 }
@@ -77,10 +77,7 @@ function MoonIcon(props: { className: string }) {
   );
 }
 
-function MobileNavItem({
-  href,
-  children,
-}: React.PropsWithChildren<MobileNavProps>) {
+function MobileNavItem({ href, children }: React.PropsWithChildren<NavProps>) {
   return (
     <li>
       <Popover.Button className="block py-2">
@@ -144,7 +141,7 @@ function MobileNavigation(props: { className: string }) {
     </Popover>
   );
 }
-function NavItem(href: any, children: any) {
+function NavItem({ href, children }: React.PropsWithChildren<NavProps>) {
   let isActive = useRouter().pathname === href;
 
   return (
@@ -164,6 +161,20 @@ function NavItem(href: any, children: any) {
         )}
       </Link>
     </li>
+  );
+}
+
+function DesktopNavigation(props: { className: string }) {
+  return (
+    <nav {...props}>
+      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+        <NavItem href="/about">About</NavItem>
+        <NavItem href="/articles">Articles</NavItem>
+        <NavItem href="/projects">Projects</NavItem>
+        <NavItem href="/speaking">Speaking</NavItem>
+        <NavItem href="/uses">Uses</NavItem>
+      </ul>
+    </nav>
   );
 }
 
@@ -413,7 +424,7 @@ export function Header() {
               </div>
               <div className="flex flex-1 justify-end md:justify-center">
                 <MobileNavigation className="pointer-events-auto md:hidden" />
-                {/* <DesktopNavigation className="pointer-events-auto hidden md:block" /> */}
+                <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto">
