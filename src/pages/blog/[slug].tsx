@@ -1,6 +1,6 @@
 import { allPosts, Post } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import MDXComponents from "components/MDXComponent";
+import MDXComponents from "@/components/MDXComponent";
 import type { GetStaticProps } from "next";
 
 export const getStaticPaths = () => {
