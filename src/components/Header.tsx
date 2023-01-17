@@ -344,7 +344,7 @@ export function Header() {
       let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
 
       setProperty("--avatar-border-transform", borderTransform);
-      setProperty("--avatar-border-opacity", scale === toScale ? 1 : 0);
+      setProperty("--avatar-border-opacity", scale === toScale ? "1" : "0");
     }
 
     function updateStyles() {
