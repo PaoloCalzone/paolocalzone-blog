@@ -344,7 +344,7 @@ export function Header() {
       let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
 
       setProperty("--avatar-border-transform", borderTransform);
-      setProperty("--avatar-border-opacity", scale === toScale ? "1" : "0");
+      setProperty("--avatar-border-opacity", scale === toScale ? 1 : 0);
     }
 
     function updateStyles() {
@@ -358,7 +358,7 @@ export function Header() {
     window.addEventListener("resize", updateStyles);
 
     return () => {
-      // @ts-ignore
+      //@ts-ignore
       window.removeEventListener("scroll", updateStyles, { passive: true });
       window.removeEventListener("resize", updateStyles);
     };
@@ -408,7 +408,7 @@ export function Header() {
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
-          style={{ position: "var(--header-position)" as any }}
+          /* style={{ position: "var(--header-position)" }} */
         >
           <Container
             className="top-[var(--header-top,theme(spacing.6))] w-full"
