@@ -40,7 +40,6 @@ export const Post = defineDocumentType(() => ({
     locale: {
       type: "string",
       resolve: (post) => {
-        console.log("DOC", post);
         return getLocale(post._raw.sourceFileDir);
       },
     },
