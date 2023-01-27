@@ -1,7 +1,20 @@
+import { allPosts, Post } from "contentlayer/generated";
 import Head from "next/head";
+import Link from "next/link";
 import { Container } from "@/components/Container";
+import type {
+  GetStaticPropsResult,
+  InferGetStaticPropsType,
+  NextPage,
+} from "next";
 
-export default function Home() {
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<{ posts: Post[] }>
+> {
+  console.log("POSTS", allPosts);
+  return { props: { posts: allPosts } };
+}
+export default function Home({}) {
   return (
     <>
       <Head>
@@ -24,6 +37,7 @@ export default function Home() {
             technologies that empower regular people to explore space on their
             own terms.
           </p>
+          <Link href="/blog/fr/premier-post">/blog/fr/premier-post</Link>
           <div className="mt-6 flex gap-6">
             {/*  <SocialLink
               href="https://twitter.com"

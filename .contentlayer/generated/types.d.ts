@@ -19,7 +19,9 @@ export type Post = {
   tags?: any | undefined
   /** MDX file body */
   body: MDX
+  slug: string
   url: string
+  locale: string
 }  
 
 /** Nested types */

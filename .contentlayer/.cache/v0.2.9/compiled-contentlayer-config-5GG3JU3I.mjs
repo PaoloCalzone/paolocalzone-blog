@@ -1,53 +1,52 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files"; //eslint-disable-line
-
-const getLocale = (path: string) => {
+// contentlayer.config.ts
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+var getLocale = (path) => {
   const pathArray = path.split(".");
   console.log(pathArray);
   return pathArray.length > 2 ? pathArray.slice(-2)[0] : "en";
 };
-
-export const Post = defineDocumentType(() => ({
+var Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: "**/*.mdx",
   contentType: "mdx",
   fields: {
     title: {
       type: "string",
-      required: true,
+      required: true
     },
     date: {
       type: "date",
-      required: true,
+      required: true
     },
     summary: {
       type: "string",
-      required: true,
+      required: true
     },
     tags: {
       type: "json",
-      required: false,
-    },
+      required: false
+    }
   },
   computedFields: {
-    slug: {
-      type: "string",
-      resolve: (post) => post._raw.sourceFileName.split(".")[0],
-    },
     url: {
       type: "string",
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
+      resolve: (post) => `/blog/${post._raw.flattenedPath}`
     },
     locale: {
       type: "string",
       resolve: (post) => {
         console.log("DOC", post);
         return getLocale(post._raw.sourceFileDir);
-      },
-    },
-  },
+      }
+    }
+  }
 }));
-
-export default makeSource({
+var contentlayer_config_default = makeSource({
   contentDirPath: "blog",
-  documentTypes: [Post],
+  documentTypes: [Post]
 });
+export {
+  Post,
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-5GG3JU3I.mjs.map
