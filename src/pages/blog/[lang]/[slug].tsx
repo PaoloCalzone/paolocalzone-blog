@@ -1,16 +1,19 @@
 import { allPosts, Post } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import { Container } from "@/components/Container";
 import MDXComponents from "@/components/MDXComponent";
 import type { GetStaticProps, GetStaticPaths } from "next";
 
 const PostLayout: React.FC<{ post: Post }> = ({ post }) => {
   const Component = useMDXComponent(post.body.code);
-  console.log("POST", post);
   return (
-    <div className="sans">
-      {" "}
-      <Component components={MDXComponents} />
-    </div>
+    <Container className="">
+      <div className="">
+        <div className="">
+          <Component components={MDXComponents} />
+        </div>
+      </div>
+    </Container>
   );
 };
 
