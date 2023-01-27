@@ -7,9 +7,9 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 const PostLayout: React.FC<{ post: Post }> = ({ post }) => {
   const Component = useMDXComponent(post.body.code);
   return (
-    <Container className="">
-      <div className="">
-        <div className="">
+    <Container className="mt-16 lg:mt-32">
+      <div className="xl:relative">
+        <div className="mx-auto max-w-2xl">
           <Component components={MDXComponents} />
         </div>
       </div>
