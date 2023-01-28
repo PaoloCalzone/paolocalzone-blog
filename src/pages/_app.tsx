@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-
+import SEO from "@/components/default-seo";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 
@@ -34,6 +34,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
         </div>
       </div>
       <div className="relative">
+        <SEO />
         <Header />
         <main className={`${syne.variable} font-sans`}>
           <Component previousPathname={previousPathname} {...pageProps} />
