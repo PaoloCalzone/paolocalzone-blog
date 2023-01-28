@@ -4,7 +4,11 @@ import { Container } from "@/components/Container";
 import MDXComponents from "@/components/MDXComponent";
 import type { GetStaticProps, GetStaticPaths } from "next";
 
-const PostLayout: React.FC<{ post: Post }> = ({ post }) => {
+type PostProps = {
+  post: Post;
+};
+
+export default function PostLayout({ post }: PostProps) {
   const Component = useMDXComponent(post.body.code);
   return (
     <Container className="mt-16 lg:mt-32">
@@ -15,9 +19,7 @@ const PostLayout: React.FC<{ post: Post }> = ({ post }) => {
       </div>
     </Container>
   );
-};
-
-export default PostLayout;
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = allPosts.map((post) => ({
