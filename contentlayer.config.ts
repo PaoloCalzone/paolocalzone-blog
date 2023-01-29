@@ -43,6 +43,14 @@ export const Post = defineDocumentType(() => ({
         return getLocale(post._raw.sourceFileDir);
       },
     },
+    og: {
+      type: "string",
+      resolve: (post) => `/blog/${post._raw.flattenedPath}/og.jpg`,
+    },
+    image: {
+      type: "string",
+      resolve: (post) => `/blog/${post._raw.flattenedPath}/image.jpg`,
+    },
   },
 }));
 
