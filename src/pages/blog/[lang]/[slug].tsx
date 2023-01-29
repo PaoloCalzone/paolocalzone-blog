@@ -3,21 +3,53 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import { Container } from "@/components/Container";
 import MDXComponents from "@/components/MDXComponent";
 import type { GetStaticProps, GetStaticPaths } from "next";
+import { NextSeo } from "next-seo";
+import { SITE_URL } from "@/lib/constants";
 
 type PostProps = {
   post: Post;
 };
 
 export default function PostLayout({ post }: PostProps) {
+  const seoTitle = `${post.title} | Paolo Calzone`;
+  const seoDescription = post.summary;
+  const lang = post.locale;
+  const url = `${SITE_URL}/${lang}/${post.slug}`;
+
   const Component = useMDXComponent(post.body.code);
   return (
-    <Container className="mt-16 lg:mt-32">
-      <div className="xl:relative">
-        <div className="mx-auto max-w-2xl">
-          <Component components={MDXComponents} />
+    <>
+      <NextSeo
+        title={seoTitle}
+        description={seoDescription}
+        canonical={url}
+        openGraph={{
+          title: seoTitle,
+          description: seoDescription,
+          url,
+          type: "article",
+          images: [
+            {
+              url: post.og
+                ? `${url}/og`
+                : `${SITE_URL}/api/og?title=${seoTitle}&description=${seoDescription}`,
+              alt: seoTitle,
+            },
+          ],
+          article: {
+            publishedTime: post.date,
+            authors: ["https://paolocalzone.xyz"],
+          },
+        }}
+      />
+      <Container className="mt-16 lg:mt-32">
+        <div className="xl:relative">
+          <div className="mx-auto max-w-2xl">
+            <Component components={MDXComponents} />
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 }
 
