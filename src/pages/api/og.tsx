@@ -14,13 +14,15 @@ export default function handler(req: NextRequest) {
       searchParams.get("title")?.slice(0, 100) ?? "My default title";
     const description =
       searchParams.get("description")?.slice(0, 200) ?? "By Paolo Calzone";
+    const backgroundColor = searchParams.get("backgroundColor") ?? "white";
+    const textColor = searchParams.get("textColor") ?? "black";
 
     return new ImageResponse(
       (
         <div
           style={{
-            backgroundColor: "black",
             backgroundSize: "150px 150px",
+            backgroundColor: backgroundColor,
             height: "100%",
             width: "100%",
             display: "flex",
@@ -40,26 +42,30 @@ export default function handler(req: NextRequest) {
             }}
           >
             <img
-              alt="Vercel"
-              height={200}
-              src={`${SITE_URL}/avatar.jpg`}
-              style={{ margin: "0 30px" }}
-              width={232}
+              alt={title}
+              src={`${SITE_URL}/avatar.png`}
+              style={{ margin: "0 30px", borderRadius: "50%" }}
+              width={128}
             />
           </div>
           <div
             style={{
+              display: "flex",
+              fontFamily: "sans-serif",
               fontSize: 60,
               fontStyle: "normal",
               letterSpacing: "-0.025em",
-              color: "white",
+              textTransform: "uppercase",
+              fontWeight: 800,
+
+              color: textColor,
               marginTop: 30,
               padding: "0 120px",
               lineHeight: 1.4,
               whiteSpace: "pre-wrap",
             }}
           >
-            {title} - {description}
+            {title}
           </div>
         </div>
       ),
