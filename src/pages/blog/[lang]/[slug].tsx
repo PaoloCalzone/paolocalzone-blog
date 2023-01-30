@@ -12,7 +12,8 @@ type PostProps = {
 
 export default function PostLayout({ post }: PostProps) {
   const seoTitle = `${post.title} | Paolo Calzone`;
-  const seoDescription = post.summary;
+  const seoDescription = post.description;
+  const ogSubtitle = post.ogSubtitle;
   const lang = post.locale;
   const url = `${SITE_URL}/${lang}/${post.slug}`;
 
@@ -32,7 +33,7 @@ export default function PostLayout({ post }: PostProps) {
             {
               url: post.og
                 ? `${url}/og`
-                : `${SITE_URL}/api/og?title=${seoTitle}&description=${seoDescription}`,
+                : `${SITE_URL}/api/og?title=${seoTitle}&ogSubtitle=${ogSubtitle}}`,
               alt: seoTitle,
             },
           ],
