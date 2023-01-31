@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { Container } from "@/components/Container";
 import avatarImage from "@/images/avatar.jpg";
+import SwitchLang from "@/components/SwitchLang";
 import { Fragment, ReactNode, useEffect, useRef } from "react";
 
 interface NavProps {
@@ -426,10 +427,12 @@ export function Header() {
                 <MobileNavigation className="pointer-events-auto md:hidden" />
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
+
               <div className="flex justify-end md:flex-1">
                 <div className="pointer-events-auto">
                   <ModeToggle />
                 </div>
+                <SwitchLang />
               </div>
             </div>
           </Container>
