@@ -1,4 +1,6 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files"; //eslint-disable-line
+import rehypePrism from "rehype-prism-plus";
+import codeTitle from "rehype-code-titles";
 
 const getLocale = (path: string) => {
   const pathArray = path.split(".");
@@ -61,4 +63,7 @@ export const Post = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "blog",
   documentTypes: [Post],
+  mdx: {
+    rehypePlugins: [rehypePrism, codeTitle],
+  },
 });
