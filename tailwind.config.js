@@ -6,10 +6,17 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./blog/**/*.mdx",
   ],
   darkMode: "class",
   plugins: [require("@tailwindcss/typography")],
+
   theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-syne)", ...fontFamily.sans],
+      },
+    },
     fontSize: {
       xs: ["0.8125rem", { lineHeight: "1.5rem" }],
       sm: ["0.875rem", { lineHeight: "1.5rem" }],
@@ -102,6 +109,7 @@ module.exports = {
           p: {
             marginTop: theme("spacing.7"),
             marginBottom: theme("spacing.7"),
+            fontWeight: theme("fontWeight.semibold"),
           },
 
           // Headings
@@ -110,7 +118,6 @@ module.exports = {
             fontWeight: theme("fontWeight.semibold"),
           },
           h2: {
-            fontSize: theme("fontSize.xl")[0],
             lineHeight: theme("lineHeight.7"),
             marginTop: theme("spacing.20"),
             marginBottom: theme("spacing.4"),
@@ -305,11 +312,6 @@ module.exports = {
         },
       },
     }),
-    extend: {
-      fontFamily: {
-        sans: ["var(--font-syne)", ...fontFamily.sans],
-      },
-    },
   },
   plugins: [],
 };

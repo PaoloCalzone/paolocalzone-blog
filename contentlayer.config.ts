@@ -1,5 +1,5 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files"; //eslint-disable-line
-import rehypePrism from "rehype-prism-plus";
+import rehypePrismPlus from "rehype-prism-plus";
 import codeTitle from "rehype-code-titles";
 
 const getLocale = (path: string) => {
@@ -64,6 +64,6 @@ export default makeSource({
   contentDirPath: "blog",
   documentTypes: [Post],
   mdx: {
-    rehypePlugins: [rehypePrism, codeTitle],
+    rehypePlugins: [rehypePrismPlus, codeTitle],
   },
 });

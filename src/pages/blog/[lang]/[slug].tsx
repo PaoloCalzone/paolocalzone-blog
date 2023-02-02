@@ -1,7 +1,7 @@
 import { allPosts, Post } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { Container } from "@/components/Container";
-import MDXComponents from "@/components/MDXComponent";
+import MDXComponents from "@/components/MDXComponents";
 import type { GetStaticProps, GetStaticPaths } from "next";
 import { NextSeo } from "next-seo";
 import { SITE_URL } from "@/lib/constants";

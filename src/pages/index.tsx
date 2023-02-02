@@ -35,6 +35,10 @@ export default function Home({}) {
             blockchain technology to real world use cases.
           </p>
           <Link href="/blog/fr/premier-post">/blog/fr/premier-post</Link>
+          <h2 className="color">SOME other TITLE H2</h2>
+          <pre className="language-js">
+            <code className="language-js">const data = 23</code>
+          </pre>
           <div className="mt-6 flex gap-6">
             {/*  <SocialLink
               href="https://twitter.com"

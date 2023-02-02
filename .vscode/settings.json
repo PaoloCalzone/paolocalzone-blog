@@ -1,0 +1,9 @@
+// Set color vscode topbar to yellow
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#FFD700",
+    "titleBar.activeForeground": "#000000",
+    "titleBar.inactiveBackground": "#FFD700",
+    "titleBar.inactiveForeground": "#000000"
+  }
+}
