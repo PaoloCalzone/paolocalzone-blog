@@ -1,6 +1,9 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files"; //eslint-disable-line
-import rehypePrismPlus from "rehype-prism-plus";
-import codeTitle from "rehype-code-titles";
+import { rehypeAccessibleEmojis } from "rehype-accessible-emojis";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 const getLocale = (path: string) => {
   const pathArray = path.split(".");
@@ -64,6 +67,43 @@ export default makeSource({
   contentDirPath: "blog",
   documentTypes: [Post],
   mdx: {
-    rehypePlugins: [rehypePrismPlus, codeTitle],
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeAccessibleEmojis,
+      rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          // theme: "material-theme-palenight",
+          theme: "material-theme-palenight",
+
+          // Keep the background or use a custom background color?
+          keepBackground: true,
+
+          onVisitLine(node: any) {
+            // Prevent lines from collapsing in `display: grid` mode, and allow empty
+            // lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
+          },
+          onVisitHighlightedLine(node: any) {
+            node.properties.className.push("line--highlighted");
+          },
+          onVisitHighlightedWord(node: any) {
+            node.properties.className = ["word--highlighted"];
+          },
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
+          },
+        },
+      ],
+    ],
   },
 });
