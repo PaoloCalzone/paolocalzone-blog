@@ -48,9 +48,6 @@ const MDXComponents = {
       {...props}
     />
   ),
-  inlineCode: (props: Object) => (
-    <code className="bg-gray-100 rounded px-1" {...props} />
-  ),
 
   table: (props: Object) => <table className="table-auto" {...props} />,
   th: (props: Object) => <th className="px-4 py-2" {...props} />,
