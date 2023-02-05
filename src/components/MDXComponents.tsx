@@ -1,42 +1,45 @@
 const MDXComponents = {
   h1: (props: Object) => (
     <h1
-      className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+      className="text-4xl mb-16 font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
       {...props}
     />
   ),
   h2: (props: Object) => (
     <h2
-      className="text-3xl font-boldtracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl"
+      className="text-3xl mb-16 font-boldtracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl"
       {...props}
     />
   ),
   h3: (props: Object) => (
     <h3
-      className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl"
+      className="text-2xl mb-16 font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-3xl"
       {...props}
     />
   ),
   h4: (props: Object) => (
     <h4
-      className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-2xl"
+      className="text-xl mb-16 font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-2xl"
       {...props}
     />
   ),
   h5: (props: Object) => (
     <h5
-      className="text-lg font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-xl"
+      className="text-lg mb-16 font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-xl"
       {...props}
     />
   ),
   h6: (props: Object) => (
     <h6
-      className="text-base font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-lg"
+      className="text-xl mb-16 font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-lg"
       {...props}
     />
   ),
   p: (props: Object) => (
-    <p className="text-base text-zinc-600 dark:text-zinc-400" {...props} />
+    <p
+      className="text-xl mb-12 leading-8 text-zinc-600 dark:text-zinc-400"
+      {...props}
+    />
   ),
   a: (props: Object) => <a className="text-blue-500" {...props} />,
   ul: (props: Object) => <ul className="list-disc pl-5" {...props} />,
