@@ -432,7 +432,7 @@ export function Header() {
                 <div className="pointer-events-auto">
                   <ModeToggle />
                 </div>
-                <SwitchLang />
+                {/* <SwitchLang /> */}
               </div>
             </div>
           </Container>
