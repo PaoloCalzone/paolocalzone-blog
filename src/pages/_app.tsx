@@ -33,10 +33,10 @@ export default function App({ Component, pageProps, router }: AppProps) {
           <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
         </div>
       </div>
-      <div className="relative">
+      <div className={`relative ${syne.variable} font-sans`}>
         <SEO />
         <Header />
-        <main className={`${syne.variable} font-sans`}>
+        <main>
           <Component previousPathname={previousPathname} {...pageProps} />
         </main>
         <Footer />
