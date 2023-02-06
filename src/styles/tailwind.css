@@ -2,7 +2,3 @@
 @import "./syntax-highlighting.css";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
-pre > code {
-  display: grid;
-}
