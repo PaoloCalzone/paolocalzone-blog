@@ -25,20 +25,17 @@ export default function Home({}) {
         />
       </Head>
       <Container className="mt-9">
-        <div className="max-w-2xl">
+        <div className="max-w-xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            gm I&apos;m Paolo👋, a builder of decentralized Apps focused on
-            using blockchain tech to solve real world use cases.
+            gm, I&apos;m Paolo, a web3 App builder 🌿
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I’m Paolo, a decentralized App builder. Focused on bringing
-            blockchain technology to real world use cases.
+            blockchain technology to real world use cases. Web3 builder, project
+            shipper, passionate about decentralization and open source.
           </p>
           <Link href="/blog/fr/premier-post">/blog/fr/premier-post</Link>
-          <h2 className="color">SOME other TITLE H2</h2>
-          <pre className="language-js">
-            <code className="language-js">const data = 23</code>
-          </pre>
+
           <div className="mt-6 flex gap-6">
             {/*  <SocialLink
               href="https://twitter.com"

@@ -17,6 +17,7 @@ module.exports = {
         sans: ["var(--font-syne)", ...fontFamily.sans],
       },
     },
+
     fontSize: {
       xs: ["0.8125rem", { lineHeight: "1.5rem" }],
       sm: ["0.875rem", { lineHeight: "1.5rem" }],
