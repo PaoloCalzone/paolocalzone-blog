@@ -2,6 +2,7 @@ import { allPosts, Post } from "contentlayer/generated";
 import Head from "next/head";
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { GitHubIcon, TwitterIcon } from "@/components/SocialIcons";
 import type {
   GetStaticPropsResult,
   InferGetStaticPropsType,
@@ -14,6 +15,15 @@ export async function getStaticProps(): Promise<
   console.log("POSTS", allPosts);
   return { props: { posts: allPosts } };
 }
+
+function SocialLink(props: { href: string; icon: React.FC }) {
+  return (
+    <Link className="group -m-1 p-1" {...props}>
+      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+    </Link>
+  );
+}
+
 export default function Home({}) {
   return (
     <>
@@ -37,26 +47,17 @@ export default function Home({}) {
           <Link href="/blog/fr/premier-post">/blog/fr/premier-post</Link>
 
           <div className="mt-6 flex gap-6">
-            {/*  <SocialLink
+            <SocialLink
               href="https://twitter.com"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
             />
-            <SocialLink
-              href="https://instagram.com"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
+
             <SocialLink
               href="https://github.com"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
-            <SocialLink
-              href="https://linkedin.com"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
-            /> */}
           </div>
         </div>
       </Container>
