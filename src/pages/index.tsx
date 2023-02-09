@@ -9,6 +9,12 @@ import type {
   NextPage,
 } from "next";
 
+type SocialLinkProps = {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  href: string;
+  [x: string]: any;
+};
+
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ posts: Post[] }>
 > {
@@ -16,7 +22,7 @@ export async function getStaticProps(): Promise<
   return { props: { posts: allPosts } };
 }
 
-function SocialLink(props: { href: string; icon: React.FC }) {
+function SocialLink({ icon: Icon, ...props }: SocialLinkProps) {
   return (
     <Link className="group -m-1 p-1" {...props}>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
