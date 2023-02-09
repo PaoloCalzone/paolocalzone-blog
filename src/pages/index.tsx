@@ -2,7 +2,7 @@ import { allPosts, Post } from "contentlayer/generated";
 import Head from "next/head";
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { GitHubIcon, TwitterIcon } from "@/components/SocialIcons";
+import { GitHubIcon, TwitterIcon, LensIcon } from "@/components/SocialIcons";
 import type {
   GetStaticPropsResult,
   InferGetStaticPropsType,
@@ -53,6 +53,11 @@ export default function Home({}) {
           <Link href="/blog/fr/premier-post">/blog/fr/premier-post</Link>
 
           <div className="mt-6 flex gap-6">
+            <SocialLink
+              href="https://github.com"
+              aria-label="Follow on GitHub"
+              icon={LensIcon}
+            />
             <SocialLink
               href="https://twitter.com"
               aria-label="Follow on Twitter"
