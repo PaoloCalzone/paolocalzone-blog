@@ -47,18 +47,18 @@ export default function Home({ posts }: HomeProps) {
 
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://github.com"
+              href="https://lenster.xyz/u/paolocalzone"
               aria-label="Follow on GitHub"
               icon={LensIcon}
             />
             <SocialLink
-              href="https://twitter.com"
+              href="https://twitter.com/paolocalz"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
             />
 
             <SocialLink
-              href="https://github.com"
+              href="https://github.com/PaoloCalzone"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
