@@ -43,7 +43,7 @@ export default function Home({}) {
       <Container className="mt-9">
         <div className="max-w-xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            gm, I&apos;m Paolo, a web3 App builder 🌿
+            gm, I&apos;m Paolo, a web3 dApp builder 🌿
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I’m Paolo, a decentralized App builder. Focused on bringing
