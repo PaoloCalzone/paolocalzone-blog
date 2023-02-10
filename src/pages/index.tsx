@@ -1,13 +1,14 @@
 import { allPosts, Post } from "contentlayer/generated";
+import { pick } from "contentlayer/utils";
 import Head from "next/head";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { GitHubIcon, TwitterIcon, LensIcon } from "@/components/SocialIcons";
-import type {
-  GetStaticPropsResult,
-  InferGetStaticPropsType,
-  NextPage,
-} from "next";
+import type { GetStaticProps } from "next";
+
+type HomeProps = {
+  posts: Post[];
+};
 
 type SocialLinkProps = {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -15,22 +16,14 @@ type SocialLinkProps = {
   [x: string]: any;
 };
 
-export async function getStaticProps(): Promise<
-  GetStaticPropsResult<{ posts: Post[] }>
-> {
-  console.log("POSTS", allPosts);
-  return { props: { posts: allPosts } };
-}
-
-function SocialLink({ icon: Icon, ...props }: SocialLinkProps) {
-  return (
-    <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
-    </Link>
-  );
-}
-
-export default function Home({}) {
+export default function Home({ posts }: HomeProps) {
+  const SocialLink = ({ icon: Icon, ...props }: SocialLinkProps) => {
+    return (
+      <Link className="group -m-1 p-1" {...props}>
+        <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+      </Link>
+    );
+  };
   return (
     <>
       <Head>
@@ -89,3 +82,12 @@ export default function Home({}) {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = allPosts
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .filter((_, i) => i < 4)
+    .map((post) => pick(post, ["slug", "title", "date", "image"]));
+
+  return { props: { posts } };
+};
