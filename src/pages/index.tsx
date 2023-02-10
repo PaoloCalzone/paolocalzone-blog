@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { GitHubIcon, TwitterIcon, LensIcon } from "@/components/SocialIcons";
 import type { GetStaticProps } from "next";
+import PostCard from "@/components/PostCard";
 
 type HomeProps = {
   posts: Post[];
@@ -69,9 +70,9 @@ export default function Home({ posts }: HomeProps) {
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
-            {/*  {articles.map((article) => (
-              <Article key={article.slug} article={article} />
-            ))} */}
+            {posts.map((post) => (
+              <PostCard key={post.slug} post={post} />
+            ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             {/*  <Newsletter />
@@ -87,7 +88,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = allPosts
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .filter((_, i) => i < 4)
-    .map((post) => pick(post, ["slug", "title", "date", "image"]));
+    .map((post) => pick(post, ["url", "title", "date", "description"]));
 
   return { props: { posts } };
 };
