@@ -3,9 +3,10 @@ import { pick } from "contentlayer/utils";
 import Head from "next/head";
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { Card } from "@/components/Card";
 import { GitHubIcon, TwitterIcon, LensIcon } from "@/components/SocialIcons";
 import type { GetStaticProps } from "next";
-import PostCard from "@/components/PostCard";
+import { formatDate } from "@/lib/formatDate";
 
 type HomeProps = {
   posts: Post[];
@@ -16,6 +17,20 @@ type SocialLinkProps = {
   href: string;
   [x: string]: any;
 };
+
+function Post({ post }: { post: Post }) {
+  console.log("Post Date:", post.date);
+  return (
+    <Card as="article">
+      <Card.Title href={post.url}>{post.title}</Card.Title>
+      <Card.Eyebrow as="time" dateTime={post.date} decorate>
+        {formatDate(post.date)}
+      </Card.Eyebrow>
+      <Card.Description>{post.description}</Card.Description>
+      <Card.Cta>Read article</Card.Cta>
+    </Card>
+  );
+}
 
 export default function Home({ posts }: HomeProps) {
   const SocialLink = ({ icon: Icon, ...props }: SocialLinkProps) => {
@@ -71,7 +86,7 @@ export default function Home({ posts }: HomeProps) {
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {posts.map((post) => (
-              <PostCard key={post.slug} post={post} />
+              <Post key={post.slug} post={post} />
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">

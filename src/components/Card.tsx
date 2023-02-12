@@ -8,6 +8,7 @@ type CardProps = {
   as?: React.ElementType;
   href?: string;
   decorate?: boolean;
+  dateTime?: string;
 };
 
 type LinkProps = {
@@ -91,6 +92,7 @@ Card.Eyebrow = function CardEyebrow({
   decorate = false,
   className,
   children,
+  dateTime,
   ...props
 }: CardProps) {
   return (

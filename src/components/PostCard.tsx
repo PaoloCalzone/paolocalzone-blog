@@ -1,6 +1,3 @@
-// write a component that takes in a post and renders it with
-// the tilte, the description, the date and is wrapped in a link
-// to the post
 import type { Post } from ".contentlayer/generated";
 import Link from "next/link";
 
@@ -18,9 +15,15 @@ export default function PostCard({ post }: PostProps) {
   return (
     <div key={post.url}>
       <Link href={post.url}>
-        <h1>{post.title}</h1>
-        <p>{post.description}</p>
-        <p>{publicationDate}</p>
+        <h3 className="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-xl">
+          {post.title}
+        </h3>
+        <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+          {post.description}
+        </p>
+        <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+          {publicationDate}
+        </p>
       </Link>
     </div>
   );
