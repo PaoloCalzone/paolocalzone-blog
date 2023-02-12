@@ -37,14 +37,14 @@ export default function Home({ posts }: HomeProps) {
       <Container className="mt-9">
         <div className="max-w-xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            gm, I&apos;m Paolo, a web3 dApp builder 🌿
+            Web3 dApp builder 🌿
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Paolo, a decentralized App builder. Focused on bringing
-            blockchain technology to real world use cases. Web3 builder, project
-            shipper, passionate about decentralization and open source.
+            I’m Paolo, a <span className="font-semibold">decentralized</span>{" "}
+            App builder. Focused on using blockchain and AI technologies to
+            solve real world problems. Standing at the crossroad of cutting edge
+            tech and old fashioned jobs and industries.
           </p>
-          <Link href="/blog/fr/premier-post">/blog/fr/premier-post</Link>
 
           <div className="mt-6 flex gap-6">
             <SocialLink
