@@ -18,10 +18,10 @@ type SocialLinkProps = {
   [x: string]: any;
 };
 
-function Post(key: string, { post }: { post: Post }) {
+function Post({ post }: { post: Post }) {
   console.log("Post Date:", post.date);
   return (
-    <Card as="article" key={key}>
+    <Card as="article">
       <Card.Title href={post.url}>{post.title}</Card.Title>
       <Card.Eyebrow as="time" dateTime={post.date} decorate>
         {formatDate(post.date)}
@@ -85,8 +85,8 @@ export default function Home({ posts }: HomeProps) {
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
-            {posts.map((post) => (
-              <Post key={post.slug} post={post} />
+            {posts.map((post, index) => (
+              <Post key={index} post={post} />
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
