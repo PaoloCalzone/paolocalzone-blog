@@ -18,10 +18,10 @@ type SocialLinkProps = {
   [x: string]: any;
 };
 
-function Post({ post }: { post: Post }) {
+function Post(key: string, { post }: { post: Post }) {
   console.log("Post Date:", post.date);
   return (
-    <Card as="article">
+    <Card as="article" key={key}>
       <Card.Title href={post.url}>{post.title}</Card.Title>
       <Card.Eyebrow as="time" dateTime={post.date} decorate>
         {formatDate(post.date)}
