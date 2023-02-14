@@ -4,7 +4,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
-import { GitHubIcon, TwitterIcon, LensIcon } from "@/components/SocialIcons";
+import {
+  GitHubIcon,
+  TwitterIcon,
+  LensIcon,
+} from "@/components/SocialIcons";
 import type { GetStaticProps } from "next";
 import { formatDate } from "@/lib/formatDate";
 
@@ -55,10 +59,11 @@ export default function Home({ posts }: HomeProps) {
             Web3 dApp builder 🌿
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Paolo, a <span className="font-semibold">decentralized</span>{" "}
-            App builder. Focused on using blockchain and AI technologies to
-            solve real world problems. Standing at the crossroad of cutting edge
-            tech and old fashioned jobs and industries.
+            I’m Paolo, a{" "}
+            <span className="font-semibold">decentralized</span> App
+            builder. Focused on using blockchain and AI technologies
+            to solve real world problems. Standing at the crossroad of
+            cutting edge tech and old fashioned jobs and industries.
           </p>
 
           <div className="mt-6 flex gap-6">
@@ -101,9 +106,15 @@ export default function Home({ posts }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = allPosts
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort(
+      (a, b) =>
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+    )
     .filter((_, i) => i < 4)
-    .map((post) => pick(post, ["url", "title", "date", "description"]));
+    .filter((post) => post._raw.sourceFileDir === "en")
+    .map((post) =>
+      pick(post, ["url", "title", "date", "description"])
+    );
 
   return { props: { posts } };
 };
