@@ -78,7 +78,10 @@ function MoonIcon(props: { className: string }) {
   );
 }
 
-function MobileNavItem({ href, children }: React.PropsWithChildren<NavProps>) {
+function MobileNavItem({
+  href,
+  children,
+}: React.PropsWithChildren<NavProps>) {
   return (
     <li>
       <Popover.Button className="block py-2">
@@ -120,7 +123,10 @@ function MobileNavigation(props: { className: string }) {
             className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
           >
             <div className="flex flex-row-reverse items-center justify-between">
-              <Popover.Button aria-label="Close menu" className="-m-1 p-1">
+              <Popover.Button
+                aria-label="Close menu"
+                className="-m-1 p-1"
+              >
                 <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
               </Popover.Button>
               <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
@@ -131,7 +137,9 @@ function MobileNavigation(props: { className: string }) {
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">About</MobileNavItem>
                 <MobileNavItem href="/blog">Blog</MobileNavItem>
-                <MobileNavItem href="/projects">Projects</MobileNavItem>
+                <MobileNavItem href="/projects">
+                  Projects
+                </MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -140,7 +148,10 @@ function MobileNavigation(props: { className: string }) {
     </Popover>
   );
 }
-function NavItem({ href, children }: React.PropsWithChildren<NavProps>) {
+function NavItem({
+  href,
+  children,
+}: React.PropsWithChildren<NavProps>) {
   let isActive = useRouter().pathname === href;
 
   return (
@@ -175,7 +186,10 @@ function DesktopNavigation(props: { className: string }) {
   );
 }
 
-function AvatarContainer({ className, ...props }: AvatarContainerProps) {
+function AvatarContainer({
+  className,
+  ...props
+}: AvatarContainerProps) {
   return (
     <div
       className={clsx(
@@ -221,16 +235,21 @@ function ModeToggle() {
   function disableTransitionsTemporarily() {
     document.documentElement.classList.add("[&_*]:!transition-none");
     window.setTimeout(() => {
-      document.documentElement.classList.remove("[&_*]:!transition-none");
+      document.documentElement.classList.remove(
+        "[&_*]:!transition-none"
+      );
     }, 0);
   }
 
   function toggleMode() {
     disableTransitionsTemporarily();
 
-    let darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    let darkModeMediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
     let isSystemDarkMode = darkModeMediaQuery.matches;
-    let isDarkMode = document.documentElement.classList.toggle("dark");
+    let isDarkMode =
+      document.documentElement.classList.toggle("dark");
 
     if (isDarkMode === isSystemDarkMode) {
       delete window.localStorage.isDarkMode;
@@ -259,7 +278,7 @@ function clamp(number: number, a: number, b: number) {
 }
 
 export function Header() {
-  let isHomePage = useRouter().pathname === "/";
+  let isHomePage = useRouter().pathname === "/" || "/fr";
   let headerRef = useRef<any>();
   let avatarRef = useRef<any>();
   let isInitial = useRef(true);
@@ -325,7 +344,8 @@ export function Header() {
 
       let scrollY = downDelay - window.scrollY;
 
-      let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale;
+      let scale =
+        (scrollY * (fromScale - toScale)) / downDelay + toScale;
       scale = clamp(scale, fromScale, toScale);
 
       let x = (scrollY * (fromX - toX)) / downDelay + toX;
@@ -341,7 +361,10 @@ export function Header() {
       let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
 
       setProperty("--avatar-border-transform", borderTransform);
-      setProperty("--avatar-border-opacity", scale === toScale ? "1" : "0");
+      setProperty(
+        "--avatar-border-opacity",
+        scale === toScale ? "1" : "0"
+      );
     }
 
     function updateStyles() {
@@ -351,12 +374,16 @@ export function Header() {
     }
 
     updateStyles();
-    window.addEventListener("scroll", updateStyles, { passive: true });
+    window.addEventListener("scroll", updateStyles, {
+      passive: true,
+    });
     window.addEventListener("resize", updateStyles);
 
     return () => {
       //@ts-ignore
-      window.removeEventListener("scroll", updateStyles, { passive: true });
+      window.removeEventListener("scroll", updateStyles, {
+        passive: true,
+      });
       window.removeEventListener("resize", updateStyles);
     };
   }, [isHomePage]);
@@ -382,7 +409,9 @@ export function Header() {
             >
               <div
                 className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={{ position: "var(--header-inner-position)" as any }}
+                style={{
+                  position: "var(--header-inner-position)" as any,
+                }}
               >
                 <div className="relative">
                   <AvatarContainer
@@ -395,7 +424,9 @@ export function Header() {
                   <Avatar
                     large
                     className="block h-16 w-16 origin-left"
-                    style={{ transform: "var(--avatar-image-transform)" }}
+                    style={{
+                      transform: "var(--avatar-image-transform)",
+                    }}
                   />
                 </div>
               </div>
@@ -434,7 +465,9 @@ export function Header() {
           </Container>
         </div>
       </header>
-      {isHomePage && <div style={{ height: "var(--content-offset)" }} />}
+      {isHomePage && (
+        <div style={{ height: "var(--content-offset)" }} />
+      )}
     </>
   );
 }
