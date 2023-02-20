@@ -31,7 +31,7 @@ function Post({ post }: { post: Post }) {
         {formatDate(post.date)}
       </Card.Eyebrow>
       <Card.Description>{post.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta>Lire article</Card.Cta>
     </Card>
   );
 }
