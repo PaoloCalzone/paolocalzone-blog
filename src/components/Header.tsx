@@ -278,7 +278,8 @@ function clamp(number: number, a: number, b: number) {
 }
 
 export function Header() {
-  let isHomePage = useRouter().pathname === "/" || "/fr";
+  let path = useRouter().pathname;
+  let isHomePage = path === "/" || path === "/fr";
   let headerRef = useRef<any>();
   let avatarRef = useRef<any>();
   let isInitial = useRef(true);
