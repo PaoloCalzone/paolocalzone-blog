@@ -10,7 +10,7 @@ import {
   LensIcon,
 } from "@/components/SocialIcons";
 import type { GetStaticProps } from "next";
-import { formatDate } from "@/lib/formatDate";
+import { formatFrenchDate } from "@/lib/formatDate";
 
 type HomeProps = {
   posts: Post[];
@@ -28,10 +28,10 @@ function Post({ post }: { post: Post }) {
     <Card as="article">
       <Card.Title href={post.url}>{post.title}</Card.Title>
       <Card.Eyebrow as="time" dateTime={post.date} decorate>
-        {formatDate(post.date)}
+        {formatFrenchDate(post.date)}
       </Card.Eyebrow>
       <Card.Description>{post.description}</Card.Description>
-      <Card.Cta>Lire article</Card.Cta>
+      <Card.Cta>Lire l&apos;article</Card.Cta>
     </Card>
   );
 }
@@ -59,13 +59,12 @@ export default function Home({ posts }: HomeProps) {
             Développeur Web3 🌿
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            gm, je suis Paolo, développeur d`&appos;`applications{" "}
+            gm, je suis Paolo, développeur d&apos;applications{" "}
             <span className="font-semibold">décentralisées</span>. Je
             cherche à exploiter les outils de la blockchain et de
-            l`&appos;`IA pour résoudre des problèmes dans le monde
-            réel. J`&appos;`aime me tenir au carrefour de la
-            technologie de pointe et des domaines qui en semblent
-            éloignés a priori.
+            l&apos;IA pour résoudre des problèmes dans le monde réel.
+            J&apos;aime me tenir au carrefour de la technologie de
+            pointe et des domaines qui en semblent éloignés a priori.
           </p>
 
           <div className="mt-6 flex gap-6">
