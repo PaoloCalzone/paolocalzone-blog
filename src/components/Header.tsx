@@ -375,9 +375,7 @@ export function Header() {
 
     return () => {
       //@ts-ignore
-      window.removeEventListener("scroll", updateStyles, {
-        passive: true,
-      });
+      window.removeEventListener("scroll", updateStyles);
       window.removeEventListener("resize", updateStyles);
     };
   }, [isHomePage]);
