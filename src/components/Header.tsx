@@ -78,10 +78,7 @@ function MoonIcon(props: { className: string }) {
   );
 }
 
-function MobileNavItem({
-  href,
-  children,
-}: React.PropsWithChildren<NavProps>) {
+function MobileNavItem({ href, children }: React.PropsWithChildren<NavProps>) {
   return (
     <li>
       <Popover.Button className="block py-2">
@@ -91,6 +88,7 @@ function MobileNavItem({
   );
 }
 function MobileNavigation(props: { className: string }) {
+  const french = useRouter().pathname.startsWith("/fr");
   return (
     <Popover {...props}>
       <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
@@ -123,10 +121,7 @@ function MobileNavigation(props: { className: string }) {
             className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
           >
             <div className="flex flex-row-reverse items-center justify-between">
-              <Popover.Button
-                aria-label="Close menu"
-                className="-m-1 p-1"
-              >
+              <Popover.Button aria-label="Close menu" className="-m-1 p-1">
                 <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
               </Popover.Button>
               <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
@@ -135,10 +130,15 @@ function MobileNavigation(props: { className: string }) {
             </div>
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-                <MobileNavItem href="/about">About</MobileNavItem>
+                <MobileNavItem href="/about">
+                  {french ? "A propos" : "About"}
+                </MobileNavItem>
                 <MobileNavItem href="/blog">Blog</MobileNavItem>
                 <MobileNavItem href="/projects">
-                  Projects
+                  {french ? "Projets" : "Projects"}
+                </MobileNavItem>
+                <MobileNavItem href={french ? "/" : "/fr"}>
+                  {french ? "Eng" : "Fr"}
                 </MobileNavItem>
               </ul>
             </nav>
@@ -148,10 +148,7 @@ function MobileNavigation(props: { className: string }) {
     </Popover>
   );
 }
-function NavItem({
-  href,
-  children,
-}: React.PropsWithChildren<NavProps>) {
+function NavItem({ href, children }: React.PropsWithChildren<NavProps>) {
   let isActive = useRouter().pathname === href;
 
   return (
@@ -175,21 +172,20 @@ function NavItem({
 }
 
 function DesktopNavigation(props: { className: string }) {
+  const french = useRouter().pathname.startsWith("/fr");
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/about">About</NavItem>
+        <NavItem href="/about">{french ? "A propos" : "About"}</NavItem>
         <NavItem href="/blog">Blog</NavItem>
-        <NavItem href="/projects">Projects</NavItem>
+        <NavItem href="/projects">{french ? "Projets" : "Projects"}</NavItem>
+        <NavItem href={french ? "/" : "/fr"}>{french ? "Eng" : "Fr"}</NavItem>
       </ul>
     </nav>
   );
 }
 
-function AvatarContainer({
-  className,
-  ...props
-}: AvatarContainerProps) {
+function AvatarContainer({ className, ...props }: AvatarContainerProps) {
   return (
     <div
       className={clsx(
@@ -235,21 +231,16 @@ function ModeToggle() {
   function disableTransitionsTemporarily() {
     document.documentElement.classList.add("[&_*]:!transition-none");
     window.setTimeout(() => {
-      document.documentElement.classList.remove(
-        "[&_*]:!transition-none"
-      );
+      document.documentElement.classList.remove("[&_*]:!transition-none");
     }, 0);
   }
 
   function toggleMode() {
     disableTransitionsTemporarily();
 
-    let darkModeMediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    );
+    let darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     let isSystemDarkMode = darkModeMediaQuery.matches;
-    let isDarkMode =
-      document.documentElement.classList.toggle("dark");
+    let isDarkMode = document.documentElement.classList.toggle("dark");
 
     if (isDarkMode === isSystemDarkMode) {
       delete window.localStorage.isDarkMode;
@@ -345,8 +336,7 @@ export function Header() {
 
       let scrollY = downDelay - window.scrollY;
 
-      let scale =
-        (scrollY * (fromScale - toScale)) / downDelay + toScale;
+      let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale;
       scale = clamp(scale, fromScale, toScale);
 
       let x = (scrollY * (fromX - toX)) / downDelay + toX;
@@ -362,10 +352,7 @@ export function Header() {
       let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
 
       setProperty("--avatar-border-transform", borderTransform);
-      setProperty(
-        "--avatar-border-opacity",
-        scale === toScale ? "1" : "0"
-      );
+      setProperty("--avatar-border-opacity", scale === toScale ? "1" : "0");
     }
 
     function updateStyles() {
@@ -466,9 +453,7 @@ export function Header() {
           </Container>
         </div>
       </header>
-      {isHomePage && (
-        <div style={{ height: "var(--content-offset)" }} />
-      )}
+      {isHomePage && <div style={{ height: "var(--content-offset)" }} />}
     </>
   );
 }
